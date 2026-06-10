@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sulabh Dahal</title>
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/skill.css">
+    <link rel="stylesheet" href="css/project-css.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="shortcut icon" href="css/favixon.png" type="image/x-icon">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: rgb(0, 0, 0);
+        }
+
+
+        .three-col {
+            display: grid;
+            grid-template-columns: 1fr minmax(0, 900px) 1fr;
+        }
+
+        .three-col> :first-child,
+        .three-col> :last-child {}
+
+
+        .navbar {
+            height: 56px;
+            width: min(67%, 680px);
+            font-weight: bold;
+            border-radius: 30px;
+            position: fixed;
+            background: rgba(240, 237, 237, 0.2);
+            backdrop-filter: blur(50px);
+            z-index: 100;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .navbar ul {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background: transparent;
+        }
+
+        .navbar li {
+            list-style: none;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: orangered;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: clamp(13px, 1.2vw, 16px);
+        }
+
+        .navbar a:hover {
+            color: white;
+        }
+
+        .navbar li:active {
+            transform: translateY(2px);
+        }
+
+        .home {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .home-inner {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 24px;
+            box-sizing: border-box;
+        }
+
+        .first-hr {
+            margin-top: 65px;
+        }
+
+        hr {
+            width: 90%;
+        }
+
+        .quote {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: 700;
+            font-size: clamp(18px, 3vw, 28px);
+            text-align: center;
+            color: white;
+            text-transform: capitalize;
+        }
+
+        .quote span {
+            font-style: italic;
+            background: linear-gradient(90deg, orangered, yellow);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .box-intro {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+            
+        }
+
+        .intro {
+            flex: 1 1 300px;
+            min-width: 260px;
+            color: white;
+            line-height: 1.5;
+            font-size: 20px;
+            font-weight: 500;
+            /* font-size: clamp(17px, 1.9vw, 20px); */
+        }
+
+        .first-image-pp {
+            flex: 0 0 clamp(180px, 30%, 280px);
+            height: clamp(180px, 25vw, 260px);
+        }
+
+        .image-pp {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 11px;
+            box-shadow: 40px 40px 1000px orangered;
+        }
+
+        .name {
+            font-weight: 600;
+            font-size: clamp(16px, 1.8vw, 21px);
+            color: orangered;
+            font-style: italic;
+        }
+
+        .make {
+            font-weight: bold;
+            color: orangered;
+            font-style: italic;
+        }
+
+        .home-last {
+            width: 100%;
+            color: gray;
+            padding: 20px 0 32px;
+            text-align: center;
+            font-weight: 700;
+            font-size: clamp(14px, 1.6vw, 18px);
+            font-style: italic;
+        }
+
+        .skills {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 32px 24px;
+            box-sizing: border-box;
+        }
+
+        .skills-inner {
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .section-title {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            font-weight: bold;
+            color: orangered;
+        }
+
+        .section-title p {
+            margin: 24px 0 0 0;
+            background: linear-gradient(90deg, orangered, white, orangered);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .skills-section {
+            padding: 1.5rem 0;
+            border-bottom: 2px solid var(--border);
+            overflow: hidden;
+            margin: 32px 0;
+        }
+
+        .marquee-track {
+            display: flex;
+            gap: 0;
+            animation: marquee 15s linear infinite;
+            width: max-content;
+        }
+
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+
+        .marquee-track+.marquee-track {
+            animation-direction: reverse;
+            margin-top: 12px;
+        }
+
+        @keyframes marquee {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        .skill-box {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 130px;
+            height: 80px;
+            margin-right: 12px;
+            background: var(--marquee-bg);
+            flex-shrink: 0;
+            transition: border-color 0.2s, background 0.2s;
+            cursor: default;
+            border: solid 1.5px rgb(179, 162, 48);
+            border-radius: 5px;
+            box-shadow: 0px 2px 10px orangered;
+            color: white;
+        }
+
+        .skill-box:hover {
+            background: var(--surface);
+          border: solid 1.5px rgb(179, 162, 48);
+        }
+
+        .skill-box-name {
+            font-family: 'Playfair Display', serif;
+          font-size: 13px;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .skill-box-level {
+            font-family: 'Courier Prime', monospace;
+            font-size: 9px;
+            color: var(--muted);
+            margin-top: 3px;
+            letter-spacing: 0.1em;
+        }
+
+        .projects {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 48px 24px;
+            box-sizing: border-box;
+            color: white;
+        }
+
+        .project-container {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(260px, 400px));
+            gap: 0;
+            box-shadow: 2px 2px 200px orangered;
+            width: 100%;
+            max-width: 820px;
+        }
+
+        .project-all {
+            min-height: 200px;
+         border: 0.1px solid rgb(127, 121, 121);
+            padding-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        .topic {
+            margin: 8px 0 0 12px;
+            font-family: 'Courier New', Courier, monospace;
+          font-weight: bold;
+            color: orangered;
+         font-size: clamp(16px, 2vw, 20px);
+        }
+
+        .discription {
+            margin: 12px 12px 0;
+            color: rgb(225, 225, 225);
+        }
+
+ .discription span {
+        font-size: clamp(12px, 1.3vw, 14px);
+        font-family: 'Lucida Sans', Geneva, Verdana, sans-serif;
+        }
+
+        .used {
+            margin: 8px 0 0 12px;
+            color: rgb(205, 194, 194);
+        }
+
+        .used span {
+            border: solid 1.3px rgb(227, 75, 20);
+            padding: 2px 4px;
+            margin-left: 4px;
+            font-size: 12px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .goto {
+            margin: 12px 0 0 12px;
+        }
+
+        .goto a {
+            text-decoration: underline;
+            text-decoration-thickness: 1.2px;
+            text-underline-offset: 4px;
+            font-size: 11px;
+            color: rgb(173, 136, 42);
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .goto a:hover {
+            color: orangered;
+        }
+
+        /* ── CONTACT ── */
+        .contact {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 24px;
+            box-sizing: border-box;
+        }
+
+        .contact-inner {
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .main-contact-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            padding: 40px 0 24px;
+        }
+
+        .link-contact {
+            flex: 1 1 240px;
+            display: flex;
+            align-items: flex-start;
+            padding-top: 16px;
+        }
+
+        .input-contact {
+            flex: 1 1 280px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .get-in-touch {
+            font-size: clamp(20px, 3vw, 28px);
+            font-weight: bold;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin-bottom: 12px;
+        }
+
+        .socials-contact {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: clamp(13px, 1.4vw, 15px);
+        }
+
+        .info-c {
+            color: orangered;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .link-c a {
+            display: block;
+            text-decoration: none;
+            font-size: clamp(12px, 1.3vw, 13px);
+            color: gray;
+            line-height: 2;
+        }
+
+        .link-c a:hover {
+            color: orangered;
+            font-weight: 500;
+        }
+
+        .input-box {
+            width: 100%;
+            max-width: 340px;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        .input {
+            display: block;
+            width: 100%;
+            height: 32px;
+            border: none;
+            font-family: 'Courier New', Courier, monospace;
+            background: transparent;
+            font-size: 13px;
+            margin: 10px 0 0;
+            color: white;
+            box-sizing: border-box;
+        }
+
+        .input:focus {
+            outline: none;
+        }
+
+        .underline-contact {
+            border: solid 1px orangered;
+            margin-top: 2px;
+        }
+
+        .textarea-input {
+            height: 70px;
+            resize: vertical;
+        }
+
+        .input-button {
+            background: linear-gradient(60deg, rgb(251, 79, 17) 50%, yellow);
+            color: white;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            height: 30px;
+            margin-top: 20px;
+            width: 80px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+
+        .input-button:active {
+            transform: translateY(2px);
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 20px 0 32px;
+            font-size: 13px;
+            color: rgb(103, 103, 103);
+            font-family: 'Courier New', Courier, monospace;
+            border-top: 1px solid rgb(40, 40, 40);
+            margin-top: 16px;
+        }
+
+
+        @media (max-width: 640px) {
+            .navbar {
+                width: calc(100% - 32px);
+                left: 16px;
+                transform: none;
+                border-radius: 12px;
+            }
+
+            .project-container {
+                grid-template-columns: 1fr;
+                max-width: 100%;
+            }
+
+            .footer {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div id="home">
+        <div class="home-inner">
+            <div class="navbar">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#skill">Skills</a></li>
+                    <li><a href="#project">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <hr class="first-hr">
+            <div class="quote">
+                <p>Local developer <span>builds software</span> that actually works</p>
+            </div>
+            <div class="box-intro">
+                <div class="intro">
+                    <span>M</span>eet the developer behind the code <span class="name">Sulabh Dahal</span>.
+                    Passionate about creating useful digital experiences, he builds websites and software with a focus
+                    on simplicity, performance, and solving everyday problems. Whether it's a management system or a
+                    custom web application, every project is built with one goal:
+                    <span class="make">"Make it work, and make it useful"</span>.
+                </div>
+                <div class="first-image-pp">
+                    <img src="css/pp.jpg" alt="Sulabh Dahal" class="image-pp">
+                </div>
+            </div>
+            <div class="home-last">"I build carefully, because careless things breaks"</div>
+        </div>
+    </div>
+
+
+    <div id="skill" class="skills">
+        <div class="skills-inner">
+            <h2 class="section-title">
+                <p>Skills &amp; Disciplines</p>
+            </h2>
+            <hr>
+            <div class="skills-section">
+                <div class="marquee-track" id="track1">
+                    <div class="skill-box">
+                        <div class="skill-box-name">HTML</div>
+                        <div class="skill-box-level">Expert</div>
+                    </div>
+                    <div class="skill-box">
+                        <div class="skill-box-name">CSS</div>
+                        <div class="skill-box-level">Expert</div>
+                    </div>
+                    <div class="skill-box">
+                        <div class="skill-box-name">JavaScript</div>
+                        <div class="skill-box-level">Advanced</div>
+                    </div>
+                    <div class="skill-box">
+                        <div class="skill-box-name">React</div>
+                        <div class="skill-box-level">Advanced</div>
+                    </div>
+                    <div class="skill-box">
+                        <div class="skill-box-name">GitHub</div>
+                        <div class="skill-box-level">Intermediate</div>
+                    </div>
+                    <div class="skill-box">
+                        <div class="skill-box-name">UI Design</div>
+                        <div class="skill-box-level">Advanced</div>
+                    </div>
+                    <div class="skill-box">
+                        <div class="skill-box-name">Figma</div>
+                        <div class="skill-box-level">Advanced</div>
+                    </div>
+                    <div class="skill-box">
+                        <div class="skill-box-name">Git</div>
+                        <div class="skill-box-level">Proficient</div>
+                    </div>
+                </div>
+                <div class="marquee-track" id="track2" style="animation-direction:reverse; margin-top:12px;">
+                    <div class="skill-box">
+                        <div class="skill-box-name">TypeScript</div>
+                        <div class="skill-box-level">Intermediate</div>
+                    </div>
+                    <div class="skill-box">
+                        <div class="skill-box-name">MongoDB</div>
+                        <div class="skill-box-level">Intermediate</div>
+                    </div>
+                    <div class="skill-box">
+                        <div class="skill-box-name">REST APIs</div>
+                        <div class="skill-box-level">Advanced</div>
+                    </div>
+                    <div class="skill-box">
+                        <div class="skill-box-name">Responsive</div>
+                        <div class="skill-box-level">Expert</div>
+                    </div>
+                    <div class="skill-box">
+                        <div class="skill-box-name">Accessibility</div>
+                        <div class="skill-box-level">Proficient</div>
+                    </div>
+                    <div class="skill-box">
+                        <div class="skill-box-name">Performance</div>
+                        <div class="skill-box-level">Proficient</div>
+                    </div>
+                    <div class="skill-box">
+                        <div class="skill-box-name">Testing</div>
+                        <div class="skill-box-level">Intermediate</div>
+                    </div>
+                    <div class="skill-box">
+                        <div class="skill-box-name">DevOps</div>
+                        <div class="skill-box-level">Beginner</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+    <div id="project" class="projects">
+        <div class="project-container">
+            <div class="first-project project-all">
+                <div class="topic"><span>Youtube Clone</span></div>
+                <div class="discription"><span>It is the perfect responsive clone of YouTube, with buttons working
+                        perfectly.</span></div>
+                <div class="used"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+                <div class="goto"><a href="https://sulabhhhnext.github.io/youtube/youtube%20clone/youtube-clone.html"
+                        target="_blank">View project&rarr;</a></div>
+            </div>
+            <div class="second-project project-all">
+                <div class="topic"><span>Imposter Game</span></div>
+                <div class="discription"><span>It is a fun project made to play Imposter Game with friends. It can be
+                        played from 3-15 players.</span></div>
+                <div class="used"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+                <div class="goto"><a href="https://sulabhhhnext.github.io/imposter-word-game/imposter-local.html"
+                        target="_blank">View project&rarr;</a></div>
+            </div>
+            <div class="third-project project-all">
+                <div class="topic"><span>Facebook Clone</span></div>
+                <div class="discription"><span>It is the perfect responsive clone of Facebook, with buttons working
+                        perfectly.</span></div>
+                <div class="used"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+                <div class="goto"><a href="https://www.facebook.com/" target="_blank">View project&rarr;</a></div>
+            </div>
+            <div class="fourth-project project-all">
+                <div class="topic"><span>Pintrest Clone</span></div>
+                <div class="discription"><span>It is the perfect responsive clone of Pintrest, with buttons working
+                        perfectly.</span></div>
+                <div class="used"><span>HTML</span><span>CSS</span><span>Python</span></div>
+                <div class="goto"><a href="https://www.pinterest.com/" target="_blank">View project&rarr;</a></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="contact" class="contact">
+        <div class="contact-inner">
+            <div class="main-contact-box">
+                <div class="link-contact">
+                    <div>
+                        <div class="get-in-touch">Get in touch</div>
+                        <div class="socials-contact">
+                            <div class="info-c">To get in touch please go through my socials and give it a follow.</div>
+                            <div class="link-c">
+                                <a target="_blank" href="https://www.facebook.com/sulabh.dahal.2025/">- Facebook -
+                                    Sulabh Dahal</a>
+                                <a target="_blank" href="https://www.instagram.com/sulabh_got_no_chill">- Instagram -
+                                    Sulabh-got-no-chill</a>
+                                <a target="_blank" href="https://www.linkedin.com/in/sulabh-dahal-42b66737b/">- Linked
+                                    In - Sulabh Dahal</a>
+                                <a target="_blank" href="https://github.com/sulabhhhnext">- GitHub - Sulabhhhnext</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-contact">
+                    <div class="input-box">
+                        <input type="text" placeholder="Your Name" class="name-input input">
+                        <div class="underline-contact"></div>
+                        <input type="email" placeholder="Email Address" class="email-input input">
+                        <div class="underline-contact"></div>
+                        <input type="text" placeholder="Subject" class="subject-input input">
+                        <div class="underline-contact"></div>
+                        <textarea class="textarea-input input" placeholder="Write your enquiry here..."></textarea>
+                        <div class="underline-contact"></div>
+                        <button class="input-button">Submit</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div>Email: sulabhdahal456@gmail.com</div>
+                <div>@allcopyrightreserved2026</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="css/pro.js"></script>
+</body>
+
+</html>
